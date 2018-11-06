@@ -8,8 +8,7 @@
 <div class="col-lg-12">
     <div class="card">
         <div class="card-title">
-            <h4>Table Basic </h4>
-
+        <h4>LIsta de maestros</h4><a href="{{ route('maestro.create')}}"><button class="btn btn-success">Añadir Maestro</button></a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -36,7 +35,7 @@
                                 <td>{{ $maestro->nombre}}</td>
                                 <td>{{ $maestro->materia}}</td>
                                 <td>{{ $maestro->experiencia}} Años</td>
-                                <td><a href="{{ route('unidad.show', ['unidad' => $maestro->unidad_educativa]) }}">{{ $maestro->unidad_educativa->nombre}}</a></td>
+                                <td><a href="{{ route('unidad.show', ['id' => $maestro->unidad_educativa->id]) }}">{{ $maestro->unidad_educativa->nombre}}</a></td>
                                 <td>{{ $maestro->foto}}</td>
                             </tr>
                         @endforeach

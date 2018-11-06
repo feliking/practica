@@ -44,8 +44,9 @@ class UnidadEducativaController extends Controller
      * @param  \App\UnidadEducativa  $unidadEducativa
      * @return \Illuminate\Http\Response
      */
-    public function show(UnidadEducativa $unidadEducativa)
+    public function show($id)
     {
+        $unidadEducativa = UnidadEducativa::find($id);
         return view('unidadeducativa.show', compact('unidadEducativa'));
     }
 

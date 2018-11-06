@@ -27,7 +27,8 @@ class MaestroController extends Controller
      */
     public function create()
     {
-        //
+        $unidad_educativa = UnidadEducativa::all();
+        return view('maestro.create', compact('unidad_educativa'));
     }
 
     /**
@@ -38,7 +39,28 @@ class MaestroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'ci' => 'required|unique:maestros',
+            'nombre' => 'required',
+            'materia' => 'required',
+            'experiencia' => 'required',
+            'UnidadEducativa' => 'required'
+        ];
+
+        $messages = [
+            'ci.required' => 'Se requiere el carnet de identidad',
+            'ci.unique' => 'El carnet ya fue registrado'
+        ];
+
+        $this->validate($request, $rules, $messages);
+        $maestro = new Maestro;
+        $maestro->ci = $request->ci;
+        $maestro->nombre = $request->nombre;
+        $maestro->materia = $request->materia;
+        $maestro->experiencia = $request->experiencia;
+        $maestro->unidad_educativa_id = $request->UnidadEducativa;
+        $maestro->save();
+        return redirect()->route('maestro.index');
     }
 
     /**
