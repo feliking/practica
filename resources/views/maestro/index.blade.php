@@ -22,6 +22,7 @@
                             <th>Experiencia</th>
                             <th>Unidad Educativa</th>
                             <th>Foto</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                                 <td>{{ $maestro->experiencia}} Años</td>
                                 <td><a href="{{ route('unidad.show', ['id' => $maestro->unidad_educativa->id]) }}">{{ $maestro->unidad_educativa->nombre}}</a></td>
                                 <td>{{ $maestro->foto}}</td>
+                                <td><a href="{{ route('maestro.edit', ['id' => $maestro->id]) }}"><i class="fa fa-edit"></i></a></td>
                             </tr>
                         @endforeach
                     </tbody>

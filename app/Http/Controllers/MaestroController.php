@@ -80,9 +80,11 @@ class MaestroController extends Controller
      * @param  \App\Maestro  $maestro
      * @return \Illuminate\Http\Response
      */
-    public function edit(Maestro $maestro)
+    public function edit($id)
     {
-        //
+        $maestro = Maestro::find($id);
+        $unidad_educativa = UnidadEducativa::all();
+        return view('maestro.edit', compact('maestro', 'unidad_educativa'));
     }
 
     /**
