@@ -96,7 +96,27 @@ class MaestroController extends Controller
      */
     public function update(Request $request, Maestro $maestro)
     {
-        //
+        $rules = [
+            'ci' => 'required',
+            'nombre' => 'required',
+            'materia' => 'required',
+            'experiencia' => 'required',
+            'UnidadEducativa' => 'required'
+        ];
+
+        $messages = [
+            'ci.required' => 'Se requiere el carnet de identidad'
+        ];
+
+        $this->validate($request, $rules, $messages);
+        $maestro->ci = $request->ci;
+        $maestro->nombre = $request->nombre;
+        $maestro->materia = $request->materia;
+        $maestro->experiencia = $request->experiencia;
+        $maestro->unidad_educativa_id = $request->UnidadEducativa;
+        $maestro->update();
+
+        return redirect()->route('maestro.index');
     }
 
     /**
@@ -107,6 +127,7 @@ class MaestroController extends Controller
      */
     public function destroy(Maestro $maestro)
     {
-        //
+        $maestro->delete();
+        return redirect()->route('maestro.index');
     }
 }

@@ -38,7 +38,13 @@
                                 <td>{{ $maestro->experiencia}} Años</td>
                                 <td><a href="{{ route('unidad.show', ['id' => $maestro->unidad_educativa->id]) }}">{{ $maestro->unidad_educativa->nombre}}</a></td>
                                 <td>{{ $maestro->foto}}</td>
-                                <td><a href="{{ route('maestro.edit', ['id' => $maestro->id]) }}"><i class="fa fa-edit"></i></a></td>
+                                <td><a href="{{ route('maestro.edit', ['id' => $maestro->id]) }}"><i class="fa fa-edit"></i></a>
+                                    <form method="POST" action="{{ route('maestro.destroy', ['maestro' => $maestro]) }}">
+                                        @method('DELETE')
+                                        @csrf
+                                        <input type="submit" class="fa fa-trash" value="Eliminar">
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

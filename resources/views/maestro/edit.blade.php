@@ -10,7 +10,8 @@
 </div>
 <div class="row">
     <div class="col-lg-12 text-center">
-        <form method="PUT" action="{{ route('maestro.update', ['maestro' => $maestro]) }}">
+        <form method="POST" action="{{ route('maestro.update', ['maestro' => $maestro]) }}">
+            @method('PUT')
             @csrf
             <div class="form-group">
                 <label for="">Carnet de identidad</label>
@@ -34,7 +35,7 @@
             <div class="form-group">
                 <label for="">Unidad educativa</label>
                 <select name="UnidadEducativa" class="form-control">
-                    <option value="{{ $maestro->unidad_educativa->nombre }}"></option>
+                    <option value="{{ $maestro->unidad_educativa->id }}">{{ $maestro->unidad_educativa->nombre }}</option>
                     @foreach ($unidad_educativa as $unidad)
                         <option value="{{ $unidad->id }}">{{ $unidad->nombre }}</option>   
                     @endforeach
