@@ -38,7 +38,9 @@
                                 <td>{{ $maestro->experiencia}} Años</td>
                                 <td><a href="{{ route('unidad.show', ['id' => $maestro->unidad_educativa->id]) }}">{{ $maestro->unidad_educativa->nombre}}</a></td>
                                 <td>{{ $maestro->foto}}</td>
-                                <td><a href="{{ route('maestro.edit', ['id' => $maestro->id]) }}"><i class="fa fa-edit"></i></a>
+                                <td>
+                                    <a href="{{ route('maestro.show', ['maestro' => $maestro]) }}"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('maestro.edit', ['id' => $maestro->id]) }}"><i class="fa fa-edit"></i></a>
                                     <form method="POST" action="{{ route('maestro.destroy', ['maestro' => $maestro]) }}">
                                         @method('DELETE')
                                         @csrf

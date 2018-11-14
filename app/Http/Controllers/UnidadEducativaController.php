@@ -14,7 +14,9 @@ class UnidadEducativaController extends Controller
      */
     public function index()
     {
-        //
+        $count = 0;
+        $unidades = UnidadEducativa::all();
+        return view('unidadeducativa.index', compact('unidades', 'count'));
     }
 
     /**
@@ -24,7 +26,7 @@ class UnidadEducativaController extends Controller
      */
     public function create()
     {
-        //
+        return view('unidadeducativa.create');
     }
 
     /**
@@ -35,7 +37,29 @@ class UnidadEducativaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'nombre' => 'required',
+            'distrito' => 'required',
+            'direccion' => 'required',
+            'capacidad' => 'required'
+        ];
+
+        $messages = [
+            'nombre.required' => 'El campo nombre es requerido',
+            'distrito.required' => 'Este campo es obligatorio',
+            'direccion.required' => 'La direccion es obligatoria',
+            'capacidad.required' => 'Este campo es obligatrio'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        $unidad = new UnidadEducativa;
+        $unidad->nombre = $request->nombre;
+        $unidad->distrito = $request->distrito;
+        $unidad->direccion = $request->direccion;
+        $unidad->capacidad = $request->capacidad;
+        $unidad->save();
+        return redirect()->route('unidad.index');
     }
 
     /**

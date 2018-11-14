@@ -71,7 +71,7 @@ class MaestroController extends Controller
      */
     public function show(Maestro $maestro)
     {
-        //
+        return view('maestro.show', compact('maestro'));
     }
 
     /**

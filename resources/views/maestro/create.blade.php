@@ -32,7 +32,7 @@
                 <input type="text" class="form-control" name="experiencia" value="{{ old('experiencia') }}">
             </div>
             <div class="form-group">
-                <label for="">Carnet de identidad</label>
+                <label for="">Unidad Educativa</label>
                 <select name="UnidadEducativa" id="" class="form-control">
                     <option disabled>Selecciona una opcion</option>
                     @foreach ($unidad_educativa as $unidad)
